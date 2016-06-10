@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Let's Encrypt 使用說明 (非官方)</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script>
 <!--
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -19,22 +20,7 @@ ga('require', 'urlChangeTracker');
 ga('send', 'pageview');
 //-->
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
-<link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-h1, h2, h3, h4, h5, h6 {
-    color: #aaa;
-}
-code, pre {
-    background: #eee;
-}
-pre {
-    border-radius: 3px;
-    padding: 0.5em;
-}
-</style>
+<script async src="http://www.google-analytics.com/analytics.js"></script>
 </head>
 <body>
 
@@ -44,7 +30,7 @@ pre {
 var js, fjs = d.getElementsByTagName(s)[0];
 if (d.getElementById(id)) return;
 js = d.createElement(s); js.id = id;
-js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
 fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -54,13 +40,13 @@ fjs.parentNode.insertBefore(js, fjs);
 
 <article>
 
-<h5>介紹</h5>
+<h4>介紹</h4>
 
 <p><a href="https://letsencrypt.org/">Let's Encrypt</a> 是由許多大公司以及各大非營利團體為了推廣 HTTPS 而贊助的一家免費發佈 SSL certificate 的 Certiciate Authority。</p>
 
 <p>這篇文章主要是介紹怎麼使用 Let's Encrypt 所提供的服務，會需要知道如何操作 command line interface。</p>
 
-<h5>限制</h5>
+<h4>限制</h4>
 
 <p>Let's Encrypt 目前已經正式開放，但有發行數量限制，一般人可能會遇到的：
 <ul>
@@ -72,7 +58,7 @@ fjs.parentNode.insertBefore(js, fjs);
 
 <p>最新的資訊以及完整的細節請參考「<a href="https://community.letsencrypt.org/t/rate-limits-for-lets-encrypt/6769">Rate Limits for Let's Encrypt</a>」這邊的說明。</p>
 
-<h5>安裝過程</h5>
+<h4>安裝過程</h4>
 
 <p>我們用到的程式需要 <a href="https://curl.haxx.se/">curl</a>，所以先安裝 curl：</p>
 
@@ -216,7 +202,7 @@ ssl_certificate_key /etc/letsencrypt.sh/certs/<span class="yellow">letsencrypt.t
 0 0 * * * root sleep $(expr $(printf "\%d" "0x$(hostname | md5sum | cut -c 1-8)") \% 86400); ( /etc/letsencrypt.sh/letsencrypt.sh -c -d <span class="yellow">letsencrypt.tw</span>; /usr/sbin/service nginx reload ) &gt; /tmp/letsencrypt.sh-<span class="yellow">letsencrypt.tw.log</span> 2&gt;&amp;1
 </pre>
 
-<h5>規劃</h5>
+<h4>規劃</h4>
 
 <p>這段在說明上面為什麼這樣規劃，對於自動化 (像是 <a href="https://puppetlabs.com/">Puppet</a>、<a href="https://www.chef.io/chef/">Chef</a>) 會很有幫助。</p>
 
@@ -228,7 +214,7 @@ ssl_certificate_key /etc/letsencrypt.sh/certs/<span class="yellow">letsencrypt.t
 
 <p>在 cron job 中的 <code>sleep $(expr $(printf "\%d" "0x$(hostname | md5sum | cut -c 1-8)") \% 86400)</code> 設計是利用機器名稱產生出十六進位 hash 值，抓一部分轉成十進位後除以一天的秒數，得到餘數後先停這個秒數再跑 <code>letsencrypt.sh</code>，這樣可以避免同時間有太多機器到 Let's Encrypt 的伺服器，造成類似 DDoS 的攻擊。</p>
 
-<h5>參考資料</h5>
+<h4>參考資料</h4>
 
 <ul>
     <li><a href="https://letsencrypt.org/">Let's Encrypt - Free SSL/TLS Certificates</a> (Let's Encrypt 官方網站)</li>
@@ -239,7 +225,7 @@ ssl_certificate_key /etc/letsencrypt.sh/certs/<span class="yellow">letsencrypt.t
 
 <footer>
 
-    <h5>Copyright</h5>
+    <h4>Copyright</h4>
 
     <p xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#">
         <a rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">
