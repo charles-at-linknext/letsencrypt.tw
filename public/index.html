@@ -86,7 +86,16 @@ fjs.parentNode.insertBefore(js, fjs);
 # yum install curl
 </pre>
 
-<p>下載最新版本的 <a href="https://github.com/lukas2511/letsencrypt.sh">letsencrypt.sh</a>：</p>
+<p>下載最新 release 的 <a href="https://github.com/lukas2511/letsencrypt.sh">letsencrypt.sh</a> 並且解開，目前是 0.2.0：</p>
+
+<pre>
+$ # refer: https://github.com/lukas2511/letsencrypt.sh/releases
+$ curl -LO https://github.com/lukas2511/letsencrypt.sh/archive/v0.2.0.tar.gz
+$ tar -zxv -f v0.2.0.tar.gz
+$ cd letsencrypt.sh-0.2.0/
+</pre>
+
+或是透過 Git 下載最新版本：
 
 <pre>
 $ cd ~; git clone https://github.com/lukas2511/letsencrypt.sh.git
@@ -106,7 +115,7 @@ $ curl -LO https://raw.githubusercontent.com/lukas2511/letsencrypt.sh/master/let
 # cp ~/letsencrypt.sh/letsencrypt.sh /etc/letsencrypt.sh/
 </pre>
 
-<p>設定 <code>config.sh</code> 並且建立對應的目錄：</p>
+<p>設定 <code>config.sh</code> 並且建立對應的目錄 (最新版本的檔案名稱變成 <code>config</code>)：</p>
 
 <pre>
 # echo "WELLKNOWN=/var/www/letsencrypt" &gt; /etc/letsencrypt.sh/config.sh
