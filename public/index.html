@@ -113,7 +113,7 @@ $ curl -LO https://raw.githubusercontent.com/lukas2511/letsencrypt.sh/master/let
 # mkdir -p /var/www/letsencrypt/
 </pre>
 
-<p>設定 <a href="https://httpd.apache.org/">Apache</a> 或是 <a href="http://nginx.org">nginx</a>，在要認證的 virtual host 裡加上：</p>
+<p>設定 <a href="https://httpd.apache.org/">Apache</a> 或是 <a href="http://nginx.org">nginx</a>，在要認證的 virtual host 裡加上（留意一下 alias 會不會被 root 設定影響到）：</p>
 
 <pre>
 # for Apache
